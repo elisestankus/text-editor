@@ -58,7 +58,15 @@ module.exports = () => {
 
     module: {
       rules: [
-        
+        // css/style loader 
+        {
+          // regex to match .css file type
+          test: /\.css$/i,
+          // loaders/packages to optimize css
+          use: ['style-loader', 'css-loader'],
+        },
+
+
       ],
     },
   };
