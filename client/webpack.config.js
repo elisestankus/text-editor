@@ -65,8 +65,20 @@ module.exports = () => {
           // loaders/packages to optimize css
           use: ['style-loader', 'css-loader'],
         },
-
-
+        // babel loader -- converts ES6 Javascript to ES5 for older browsers
+        {
+          test: /\.m?js$/,
+          // exclude third-party code/libraries that may already be optimized
+          exclude: /node_modules/,
+          // tells webpack to use babel-loader package from dev dependencies
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
     },
   };
