@@ -47,7 +47,13 @@ module.exports = () => {
           },
         ],
       }),
-
+      // generates html file and injects bundles script tag
+      new HtmlWebpackPlugin({
+        // path to the template html file
+        template: './index.html',
+        // sets the title for the generated html file
+        title: 'Text editor'
+      }),
     ],
 
     module: {
