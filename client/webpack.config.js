@@ -26,7 +26,28 @@ module.exports = () => {
         swDest: 'src-sw.js',
       }),
 
-      
+      // manifest.json plugin
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Text editor',
+        short_name: 'jate',
+        description: 'A text editor',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        // application's starting url
+        start_url: './',
+        publicPath: './',
+        // defines the logo source and the multiple sizes of the logo -- used when the application is installed
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
+
     ],
 
     module: {
