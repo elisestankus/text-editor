@@ -36,4 +36,13 @@ registerRoute(
       request.destination === 'script'
     );
   },
+  // serves content from cache and loads it from source when needed
+  new StaleWhileRevalidate({
+    cacheName: 'assets',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200]
+      }),
+    ],
+  })
 );
